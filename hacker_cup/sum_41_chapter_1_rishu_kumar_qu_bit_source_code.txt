@@ -1,0 +1,50 @@
+#include <bits/stdc++.h>
+using namespace std;
+
+#define int long long
+#define pb push_back
+
+void solve() {
+    int n; cin >> n;
+    vector<int> pf;
+    int x = 2;
+    while(n > 1 && x * x <= n) {
+        while(n % x == 0) {
+            pf.pb(x);
+            n /= x;
+        }
+        x++;
+    }
+    if(n > 1) {
+        pf.pb(n);
+    }
+
+    int sum = 0;
+    for(auto x: pf) sum += x;
+    if(sum > 41) {
+        cout << -1 << endl;
+        return;
+    } else {
+        int d = 41 - sum;
+        while(d > 0) {
+            pf.pb(1);
+            d--;
+        }
+        cout << pf.size() << " ";
+        for(auto x: pf) cout << x << " ";
+        cout << endl;
+    }
+}
+
+int32_t main() {
+    freopen("input.txt", "r", stdin);
+    freopen("output.txt", "w", stdout);
+	ios_base::sync_with_stdio(0);
+	cin.tie(0);
+	int tc; cin >> tc;
+	for(int i = 1; i <= tc; i++) {
+	    cout << "Case #" << i << ": ";
+        solve();
+	}
+	return 0;
+}
