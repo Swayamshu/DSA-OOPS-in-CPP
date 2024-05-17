@@ -30,7 +30,7 @@ void dijkstra(vector<vector<int> > &graph, int start)
     priority_queue<ii, vector<ii>, greater<ii> > pq;
     pq.push({0, start}); // !!! IMPORTANT ORDER: {dist, node} !!!
 
-    while (!pq.empty())
+    while (!pq.empty()) // log(V) * E
     {
         int dist = pq.top().first;
         int u = pq.top().second;
@@ -39,12 +39,12 @@ void dijkstra(vector<vector<int> > &graph, int start)
         if (dist > distance[u])
             continue;
 
-        for (int v : graph[u])
+        for (int v : graph[u]) // E 
         {
             if (distance[u] + 1 < distance[v])
             {
                 distance[v] = distance[u] + 1;
-                pq.push({distance[v], v});
+                pq.push({distance[v], v}); // log(V)
             }
         }
     }

@@ -24,7 +24,7 @@ string findOrder(string dict[], int N, int K)
     {
         int j = 0, k = 0, flag = 0;
 
-        while (j < dict[i].size() && k < dict[i + 1].size())
+        while (j < dict[i].size() && k < dict[i + 1].size() && flag == 0)
         {
             if (dict[i][j] != dict[i + 1][k] && flag == 0)
             {
@@ -35,16 +35,16 @@ string findOrder(string dict[], int N, int K)
         }
     }
 
-    for (int i = 0; i < dag.size(); i++)
-    {
-        printf("%c -> ", i + 'a');
-        for (int x : dag[i])
-        {
-            char ch = x + 'a';
-            cout << ch << ", ";
-        }
-        cout << "\n";
-    }
+    // for (int i = 0; i < dag.size(); i++)
+    // {
+    //     printf("%c -> ", i + 'a');
+    //     for (int x : dag[i])
+    //     {
+    //         char ch = x + 'a';
+    //         cout << ch << ", ";
+    //     }
+    //     cout << "\n";
+    // }
 
     vector<int> indeg(K, 0);
     for (int i = 0; i < dag.size(); i++)
